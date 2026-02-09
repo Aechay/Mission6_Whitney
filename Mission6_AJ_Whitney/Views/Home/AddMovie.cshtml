@@ -1,0 +1,48 @@
+@model Movie
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<form method="post">
+    <div class="form-group">
+    <label asp-for="Category">Category</label>
+    <br/>
+    <input type="text" asp-for="Category" class="form-control" required/>
+    <br/>
+    <label asp-for="Title">Title</label>
+    <br/>
+    <input type="text" asp-for="Title" class="form-control" required/>
+    <br/>
+    <label asp-for="Year">Year</label>
+    <br/>
+    <input type="number" asp-for="Year" class="form-control" required/>
+    <br/>
+    <label asp-for="Director">Director</label>
+    <br/>
+    <input type="text" asp-for="Director" class="form-control" required/>
+    <br/>
+    <label asp-for="Rating">Rating</label>
+    <select asp-for="Rating" class="form-control" required>
+        <option>G</option>
+        <option>PG</option>
+        <option>PG-13</option>
+        <option>R</option>
+    </select>
+    <br/>
+    <label asp-for="Edited">Edited</label>
+    <select asp-for="Edited" class="form-control">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br/>
+    <label asp-for="LentTo">Lent To</label>
+    <br/>
+    <input type="text" asp-for="LentTo" class="form-control"/>
+    <br/>
+    <label asp-for="Notes">Notes</label>
+    <br/>
+    <input type="text" asp-for="Notes" class="form-control"/>
+    <br/>
+    <button type="submit" class="btn btn-primary">Add Movie</button>
+    </div>
+</form>
