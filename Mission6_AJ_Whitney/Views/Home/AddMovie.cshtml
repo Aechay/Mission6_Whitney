@@ -5,44 +5,65 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 <form method="post">
     <div class="form-group">
-    <label asp-for="Category">Category</label>
-    <br/>
-    <input type="text" asp-for="Category" class="form-control" required/>
-    <br/>
-    <label asp-for="Title">Title</label>
-    <br/>
-    <input type="text" asp-for="Title" class="form-control" required/>
-    <br/>
-    <label asp-for="Year">Year</label>
-    <br/>
-    <input type="number" asp-for="Year" class="form-control" required/>
-    <br/>
-    <label asp-for="Director">Director</label>
-    <br/>
-    <input type="text" asp-for="Director" class="form-control" required/>
-    <br/>
-    <label asp-for="Rating">Rating</label>
-    <select asp-for="Rating" class="form-control" required>
-        <option>G</option>
-        <option>PG</option>
-        <option>PG-13</option>
-        <option>R</option>
-    </select>
-    <br/>
-    <label asp-for="Edited">Edited</label>
-    <select asp-for="Edited" class="form-control">
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-    <br/>
-    <label asp-for="LentTo">Lent To</label>
-    <br/>
-    <input type="text" asp-for="LentTo" class="form-control"/>
-    <br/>
-    <label asp-for="Notes">Notes</label>
-    <br/>
-    <input type="text" asp-for="Notes" class="form-control"/>
-    <br/>
-    <button type="submit" class="btn btn-primary">Add Movie</button>
+        <input hidden readonly asp-for="MovieId"></input>
+        <br/>
+        <label asp-for="Title">Title</label>
+        <br/>
+        <input type="text" asp-for="Title" class="form-control" required/>
+        <br/>
+        <label asp-for="Year">Year</label>
+        <br/>
+        <input type="number" asp-for="Year" class="form-control" required/>
+        <br/>
+        <label asp-for="CategoryId">Category</label>
+        <br/>
+        <select asp-for="CategoryId" class="form-control" required>
+            <option value="" disabled selected>-- Select a Category --</option>
+            @foreach (var x in ViewBag.Categories)
+            {
+                <option value="@x.CategoryId">@x.CategoryName</option>
+            }
+        </select>
+        <br/>
+        <label asp-for="Director">Director</label>
+        <br/>
+        <input type="text" asp-for="Director" class="form-control"/>
+        <br/>
+        <label asp-for="Rating">Rating</label>
+        <select asp-for="Rating" class="form-control">
+            <option>NR</option>
+            <option>UR</option>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+            <option>TV-Y7</option>
+            <option>TV-G</option>
+            <option>TV-PG</option>
+            <option>TV-14</option>
+        </select>
+        <br/>
+        <label asp-for="Edited">Edited</label>
+        <select asp-for="Edited" class="form-control" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br/>
+        <label asp-for="LentTo">Lent To</label>
+        <br/>
+        <input type="text" asp-for="LentTo" class="form-control"/>
+        <br/>
+        <label asp-for="CopiedToPlex">Copied To Plex</label>
+        <select asp-for="CopiedToPlex" class="form-control" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br/>
+        <label asp-for="Notes">Notes</label>
+        <br/>
+        <input type="text" asp-for="Notes" class="form-control"/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Add Movie</button>
     </div>
 </form>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
